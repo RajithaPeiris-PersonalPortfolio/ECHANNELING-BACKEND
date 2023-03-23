@@ -58,7 +58,6 @@ router.get("/:id", async (req, res)=>{
     }
 });
 
-
 // GET ALL
 
 router.get("/", async (req, res)=>{
