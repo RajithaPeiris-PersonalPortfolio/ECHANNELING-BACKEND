@@ -35,8 +35,15 @@ app.use("/api/users", usersRoute);
 app.use("/api/clinics", clinicsRoute);
 app.use("/api/rooms", roomsRoute);
 
-app.use((req, res, next)=>{
-  console.log("Hi! I'm A Middleware!");
+app.use((err, req, res, next)=>{
+  const errorStatus = err.status || 500;
+  const errorMessage = err.message || "Something Went Wrong!";
+  return res.status(errorStatus).json({
+    success: false,
+    status: errorStatus,
+    message: errorMessage,
+    stack: err.stack,
+  });
 });
 
 app.listen(8800, () => {

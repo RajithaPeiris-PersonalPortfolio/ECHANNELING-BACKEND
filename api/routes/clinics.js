@@ -1,5 +1,6 @@
 import express from "express";
 import Clinic from "../models/Clinic.js";
+import { createError } from "../utils/error.js";
 
 const router = express.Router();
 
@@ -62,13 +63,11 @@ router.get("/:id", async (req, res)=>{
 
 router.get("/", async (req, res, next)=>{
 
-    console.log("Hi! I'm A Clinic Route!");
-    next();
     try {
         const clinics = await Clinic.find();
         res.status(200).json(clinics);
     } catch (err) {
-        res.status(500).json(err);
+        next(err);
     }
 });
 
