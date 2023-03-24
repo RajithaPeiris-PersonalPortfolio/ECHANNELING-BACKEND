@@ -35,6 +35,10 @@ app.use("/api/users", usersRoute);
 app.use("/api/clinics", clinicsRoute);
 app.use("/api/rooms", roomsRoute);
 
+app.use((req, res, next)=>{
+  console.log("Hi! I'm A Middleware!");
+});
+
 app.listen(8800, () => {
     connect()
     console.log("Connected To The Backend!");
