@@ -1,5 +1,7 @@
 import Clinic from "../models/Clinic.js";
 
+// CREATE CLINIC
+
 export const createClinic = async (req, res, next) => {
     const newClinic = new Clinic(req.body);
        
@@ -10,6 +12,8 @@ export const createClinic = async (req, res, next) => {
         next(err);
     }
 };
+
+// UPDATE CLINIC
 
 export const updateClinic = async (req, res, next) => {
     try {
@@ -24,6 +28,8 @@ export const updateClinic = async (req, res, next) => {
     }
 };
 
+// DELETE CLINIC
+
 export const deleteClinic = async (req, res, next) => {
     try {
         await Clinic.findByIdAndDelete(req.params.id);
@@ -32,6 +38,8 @@ export const deleteClinic = async (req, res, next) => {
         next(err);
     }
 };
+
+// GET CLINIC
 
 export const getClinic = async (req, res, next) => {
     try {
@@ -43,6 +51,8 @@ export const getClinic = async (req, res, next) => {
         next(err);
     }
 };
+
+// GET ALL CLINICS
 
 export const getClinics = async (req, res, next) => {
     try {
